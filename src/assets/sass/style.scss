@@ -1,0 +1,9 @@
+$mycolor: red;
+
+.aclass {
+    color: $mycolor;
+
+    .innerclass {
+        color: $mycolor;
+    }
+}
