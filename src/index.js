@@ -1,3 +1,3 @@
-import main from './main';
-import js from './assets/js/script';
-import sass from './assets/sass/style.scss';
+import './main';
+import './assets/js/script';
+import './assets/sass/style.scss';
