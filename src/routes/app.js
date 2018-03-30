@@ -1,9 +1,11 @@
-import DashboardPage from '../views/DashboardPage';
-import UserProfile from '../views/UserProfile';
+import DashboardPage from "../views/DashboardPage";
+import UserProfile from "../views/UserProfile";
+import PageNotFound from "../views/PageNotFound";
 
 import {
   Dashboard,
-  Person
+  Person,
+  ContentPaste,
 } from "material-ui-icons";
 
 const appRoutes = [

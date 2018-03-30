@@ -15,12 +15,12 @@ import appStyle from '../variables/styles/appStyle';
 
 const switchRoutes = (
     <Switch>
-        {appRoutes.map((prop, key) => {
-            if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.to} key={key} />;
-            return <Route path={prop.path} component={prop.component} key={key} />;
-        })}
-    </Switch>
+    {appRoutes.map((prop, key) => {
+      if (prop.redirect)
+        return <Redirect from={prop.path} to={prop.to} key={key} />;
+      return <Route path={prop.path} component={prop.component} key={key} />;
+    })}
+  </Switch>
 );
 
 class App extends Component {
@@ -41,7 +41,11 @@ class App extends Component {
         return (
             <div className={classes.root}>
                 <Header open={this.state.open} handleToggle={this.handleToggle} />
-                <Sidebar open={this.state.open} handleToggle={this.handleToggle} />
+                <Sidebar 
+                open={this.state.open} 
+                handleToggle={this.handleToggle} 
+                routes={appRoutes}
+                />
 
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
