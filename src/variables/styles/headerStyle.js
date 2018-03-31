@@ -26,6 +26,9 @@ const headerStyle = theme => ({
     hide: {
         display: 'none',
     },
+    flex: {
+        flex: 1,
+      },
 });
 
 export default headerStyle;

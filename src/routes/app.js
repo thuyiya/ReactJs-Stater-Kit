@@ -5,14 +5,13 @@ import PageNotFound from "../views/PageNotFound";
 import {
   Dashboard,
   Person,
-  ContentPaste,
 } from "material-ui-icons";
 
 const appRoutes = [
   {
     path: "/dashboard",
     sidebarName: "Dashboard",
-    navbarName: "Material Dashboard",
+    navbarName: "Dashboard",
     icon: Dashboard,
     component: DashboardPage
   },

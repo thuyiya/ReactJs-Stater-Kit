@@ -36,7 +36,7 @@ class App extends Component {
     };
 
     render() {
-        const { classes } = this.props;
+        const { classes, ...rest } = this.props;
 
         return (
             <div className={classes.root}>
@@ -45,6 +45,8 @@ class App extends Component {
                 open={this.state.open} 
                 handleToggle={this.handleToggle} 
                 routes={appRoutes}
+                color="gray"
+                {...rest}
                 />
 
                 <main className={classes.content}>

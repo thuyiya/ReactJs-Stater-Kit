@@ -1,7 +1,11 @@
 // ##############################
 // // // Sidebar styles
 // #############################
-import { drawerWidth } from '../styles';
+import {
+    drawerWidth,
+    infoColor,
+    defaultFont
+} from '../styles';
 
 const sidebarStyle = theme => ({
     drawerPaper: {
@@ -29,7 +33,35 @@ const sidebarStyle = theme => ({
         justifyContent: 'flex-end',
         padding: '0 8px',
         ...theme.mixins.toolbar,
-    }
+    },
+    grayFont: {
+        color: "#bdc3c7"
+    },
+    gray: {
+        backgroundColor: infoColor,
+        boxShadow:
+            "0 12px 20px -10px rgba(236, 240, 241,1.0), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(236, 240, 241,1.0)",
+        "&:hover": {
+            backgroundColor: infoColor,
+            boxShadow:
+                "0 12px 20px -10px rgba(236, 240, 241,1.0), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(236, 240, 241,1.0)"
+        }
+    },
+
+    itemLink: {
+        margin: '4px',
+        backgroundColor: "transparent",
+        ...defaultFont
+    },
+    itemIcon: {
+        color: "rgba(0, 0, 0, 0.54)"
+    },
+    item: {
+        position: "relative",
+        display: "block",
+        color: '#000',
+        textDecoration: "none",
+      }
 });
 
 export default sidebarStyle;
