@@ -65,23 +65,23 @@ const cardActions = {
 };
 
 const orangeCardHeader = {
-  background: "linear-gradient(60deg, #ffa726, #fb8c00)",
+  background: "#f39c12",//"linear-gradient(60deg, #f83600, #f9d423)",
   ...warningBoxShadow
 };
 const greenCardHeader = {
-  background: "linear-gradient(60deg, #66bb6a, #43a047)",
+  background: "#2ecc71",//"linear-gradient(60deg, #20E2D7, #F9FEA5)",
   ...successBoxShadow
 };
 const redCardHeader = {
-  background: "linear-gradient(60deg, #ef5350, #e53935)",
+  background: "#e74c3c",//"linear-gradient(60deg, #ff0844, #ffb199)",
   ...dangerBoxShadow
 };
 const blueCardHeader = {
-  background: "linear-gradient(60deg, #26c6da, #00acc1)",
+  background: "#3498db",//"linear-gradient(60deg, #4facfe, #00f2fe)",
   ...infoBoxShadow
 };
 const purpleCardHeader = {
-  background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+  background: "#9b59b6",//"linear-gradient(60deg, #ab47bc, #8e24aa)",
   ...primaryBoxShadow
 };
 

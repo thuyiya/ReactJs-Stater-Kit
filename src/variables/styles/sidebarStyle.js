@@ -48,6 +48,7 @@ const sidebarStyle = theme => ({
 
     itemLink: {
         backgroundColor: "transparent",
+        height: "52px",
         ...defaultFont
     },
     itemIcon: {
