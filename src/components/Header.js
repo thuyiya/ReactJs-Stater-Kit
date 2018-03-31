@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import MenuIcon from 'material-ui-icons/Menu';
 import ExitToApp from 'material-ui-icons/ExitToApp';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import MailIcon from 'material-ui-icons/Mail';
 
 import {
     withStyles,
@@ -10,6 +10,9 @@ import {
     Toolbar,
     IconButton,
     Typography,
+    Badge,
+    Menu,
+    MenuItem
 } from "material-ui";
 
 import headerStyle from '../variables/styles/headerStyle';
@@ -69,6 +72,11 @@ class Header extends Component {
 
                     {auth && (
                         <div>
+                            <IconButton className={classes.margin}>
+                                <Badge badgeContent={4} color="primary">
+                                    <MailIcon />
+                                </Badge>
+                            </IconButton>
                             <IconButton
                                 aria-owns={openmenu ? 'menu-appbar' : null}
                                 aria-haspopup="true"

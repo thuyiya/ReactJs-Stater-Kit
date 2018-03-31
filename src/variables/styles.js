@@ -18,9 +18,90 @@ const defaultFont = {
   lineHeight: "1.5em"
 };
 
+const primaryBoxShadow = {
+  boxShadow:
+    "0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2)"
+};
+const infoBoxShadow = {
+  boxShadow:
+    "0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2)"
+};
+const successBoxShadow = {
+  boxShadow:
+    "0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2)"
+};
+const warningBoxShadow = {
+  boxShadow:
+    "0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2)"
+};
+const dangerBoxShadow = {
+  boxShadow:
+    "0 12px 20px -10px rgba(244, 67, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2)"
+};
+
+const card = {
+  display: "inline-block",
+  position: "relative",
+  width: "100%",
+  margin: "25px 0",
+  boxShadow: "0 1px 4px 0 rgba(0, 0, 0, 0.14)",
+  borderRadius: "3px",
+  color: "rgba(0, 0, 0, 0.87)",
+  background: "#fff"
+};
+
+const cardHeader = {
+  margin: "-20px 15px 0",
+  borderRadius: "3px",
+  padding: "15px"
+};
+
+const cardActions = {
+  margin: "0 20px 10px",
+  paddingTop: "10px",
+  borderTop: "1px solid #eeeeee",
+  height: "auto",
+  ...defaultFont
+};
+
+const orangeCardHeader = {
+  background: "linear-gradient(60deg, #ffa726, #fb8c00)",
+  ...warningBoxShadow
+};
+const greenCardHeader = {
+  background: "linear-gradient(60deg, #66bb6a, #43a047)",
+  ...successBoxShadow
+};
+const redCardHeader = {
+  background: "linear-gradient(60deg, #ef5350, #e53935)",
+  ...dangerBoxShadow
+};
+const blueCardHeader = {
+  background: "linear-gradient(60deg, #26c6da, #00acc1)",
+  ...infoBoxShadow
+};
+const purpleCardHeader = {
+  background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+  ...primaryBoxShadow
+};
+
 export {
   //variables
   drawerWidth,
+  defaultFont,
   infoColor,
-  defaultFont
+  primaryColor,
+  warningColor,
+  dangerColor,
+  successColor,
+  roseColor,
+  grayColor,
+  cardActions,
+  orangeCardHeader,
+  greenCardHeader,
+  redCardHeader,
+  blueCardHeader,
+  purpleCardHeader,
+  card,
+  cardHeader
 };
