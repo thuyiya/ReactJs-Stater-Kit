@@ -28,7 +28,17 @@ const headerStyle = theme => ({
     },
     flex: {
         flex: 1,
-      },
+    },
+    avatar: {
+        width: 40,
+        height: 40,
+    },
+    username: {
+        'align-self': 'center'
+    },
+    avatarcontainer: {
+        marginRight: 10,
+    }
 });
 
 export default headerStyle;

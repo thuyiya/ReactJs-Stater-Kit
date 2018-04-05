@@ -7,8 +7,7 @@ import className from 'classnames';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import { Sidebar, Header, Footer } from '../components';
 import appRoutes from "../routes/app.js";
 
 import appStyle from '../variables/styles/appStyle';
@@ -48,8 +47,8 @@ class App extends Component {
                 color="gray"
                 {...rest}
                 />
-
-                <main className={classes.content}>
+                <div className={classes.mainPanel} ref="mainPanel">
+                 <main className={classes.content}>
                     <div className={classes.toolbar} />
                     {/* <BrowserRouter > */}
                     {
@@ -57,7 +56,11 @@ class App extends Component {
                         switchRoutes
                     }
                     {/* </BrowserRouter> */}
+                  
                 </main>
+                
+                <Footer />
+                </div>
             </div>
         );
     }

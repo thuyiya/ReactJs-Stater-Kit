@@ -2,6 +2,8 @@
 // // // App styles
 // #############################
 
+import { drawerWidth, transition, container } from "../styles.js";
+
 const appStyle = theme => ({
     root: {
         flexGrow: 1,
@@ -13,7 +15,8 @@ const appStyle = theme => ({
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
-        padding: theme.spacing.unit * 3,
+        padding: "30px 15px",
+        minHeight: "calc(100% - 123px)"
     },
     toolbar: {
         display: 'flex',
@@ -21,7 +24,20 @@ const appStyle = theme => ({
         justifyContent: 'flex-end',
         padding: '0 8px',
         ...theme.mixins.toolbar,
-    }
+    },
+    mainPanel: {
+        overflow: "auto",
+        position: "relative",
+        float: "right",
+        ...transition,
+        maxHeight: "100%",
+        width: "100%",
+        overflowScrolling: 'touch'
+      },
+      container,
+      map: {
+        marginTop: "70px"
+      }
 });
 
 export default appStyle;

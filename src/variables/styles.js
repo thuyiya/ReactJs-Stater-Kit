@@ -4,6 +4,17 @@
 
 const drawerWidth = 240;
 
+const container = {
+  paddingRight: "15px",
+  paddingLeft: "15px",
+  marginRight: "auto",
+  marginLeft: "auto"
+};
+
+const transition = {
+  transition: "all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)"
+};
+
 const primaryColor = "#9c27b0";
 const warningColor = "#ff9800";
 const dangerColor = "#f44336";
@@ -18,25 +29,9 @@ const defaultFont = {
   lineHeight: "1.5em"
 };
 
-const primaryBoxShadow = {
-  boxShadow:
-    "0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2)"
-};
-const infoBoxShadow = {
-  boxShadow:
-    "0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2)"
-};
-const successBoxShadow = {
-  boxShadow:
-    "0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2)"
-};
-const warningBoxShadow = {
-  boxShadow:
-    "0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2)"
-};
-const dangerBoxShadow = {
-  boxShadow:
-    "0 12px 20px -10px rgba(244, 67, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2)"
+const grayBoxShadow = {
+  // boxShadow:
+  //   "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
 };
 
 const card = {
@@ -51,9 +46,9 @@ const card = {
 };
 
 const cardHeader = {
-  margin: "-20px 15px 0",
+  margin: "5px 10px 0",
   borderRadius: "3px",
-  padding: "15px"
+  padding: "5px"
 };
 
 const cardActions = {
@@ -64,29 +59,14 @@ const cardActions = {
   ...defaultFont
 };
 
-const orangeCardHeader = {
-  background: "#f39c12",//"linear-gradient(60deg, #f83600, #f9d423)",
-  ...warningBoxShadow
-};
-const greenCardHeader = {
-  background: "#2ecc71",//"linear-gradient(60deg, #20E2D7, #F9FEA5)",
-  ...successBoxShadow
-};
-const redCardHeader = {
-  background: "#e74c3c",//"linear-gradient(60deg, #ff0844, #ffb199)",
-  ...dangerBoxShadow
-};
-const blueCardHeader = {
-  background: "#3498db",//"linear-gradient(60deg, #4facfe, #00f2fe)",
-  ...infoBoxShadow
-};
-const purpleCardHeader = {
-  background: "#9b59b6",//"linear-gradient(60deg, #ab47bc, #8e24aa)",
-  ...primaryBoxShadow
+const grayCardHeader = {
+  background: "#fff",//"linear-gradient(60deg, #ab47bc, #8e24aa)",
+  ...grayBoxShadow
 };
 
 export {
   //variables
+  container,
   drawerWidth,
   defaultFont,
   infoColor,
@@ -96,12 +76,9 @@ export {
   successColor,
   roseColor,
   grayColor,
+  transition,
   cardActions,
-  orangeCardHeader,
-  greenCardHeader,
-  redCardHeader,
-  blueCardHeader,
-  purpleCardHeader,
+  grayCardHeader,
   card,
   cardHeader
 };

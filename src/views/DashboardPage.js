@@ -1,72 +1,128 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Grid } from 'material-ui';
-import ChartistGraph from "react-chartist";
+import SwipeableViews from 'react-swipeable-views';
+import { Doughnut } from 'react-chartjs-2';
+import 'chartjs-plugin-datalabels';
 import {
-    ContentCopy,
-    Store,
-    InfoOutline,
-    Warning,
-    DateRange,
-    LocalOffer,
-    Update,
-    Accessibility,
-    ArrowUpward,
-    AccessTime
-} from "material-ui-icons";
+    withStyles,
+    Grid,
+    Typography,
+    Tabs,
+    Tab,
+    AppBar,
+    Divider,
+    ListItem,
+    ListItemText,
+    Button
+} from "material-ui";
 
-import {
-    StatsCard,
-    ItemGrid,
-    ChartCard
-} from '../components';
+import { BasicCard, ItemGrid, SmileBlock, FeedbackQuestionBlock } from '../components';
 
-import {
-    dailySalesChart,
-    emailsSubscriptionChart,
-    completedTasksChart
-} from "../variables/charts";
+const data = {
+    labels: [
+        'Red',
+        'Green',
+        'Yellow'
+    ],
+    datasets: [{
+        data: [300, 50, 100],
+        backgroundColor: [
+            '#74b9ff',
+            '#3498db',
+            '#2980b9'
+        ],
+        hoverBackgroundColor: [
+            '#dfe6e9',
+            '#dfe6e9',
+            '#dfe6e9'
+        ]
+    }]
+};
 
-let simpleLineChartData = {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    series: [
-      [12, 9, 7, 8, 5],
-      [2, 1, 3.5, 7, 3],
-      [1, 3, 4, 5, 6]
-    ]
-  };
-  
+const keyFacts = [
+    'your business is in top 10% in your industry',
+    'positive feedbacks gone up 10% than last month'
+];
+
+const questionData = [
+    {
+        question: 'How is the big burger ?',
+        state: 'Active'
+    },
+    {
+        question: 'How is the new coffee ?',
+        state: 'Active'
+    },
+    {
+        question: 'How is the new table arrangement ?',
+        state: 'Active'
+    },
+    {
+        question: 'How is the new indian pizza ?',
+        state: 'InActive'
+    }
+];
+
 
 const styles = theme => ({
     root: {
-        flexGrow: 1,
+        backgroundColor: 'transparent',
     },
-    paper: {
-        padding: theme.spacing.unit * 2,
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
+    appBar: {
+        boxShadow: 'none',
+        backgroundColor: 'transparent'
     },
-    card: {
-        minWidth: 275,
+    smileBlock: {
+        display: 'flex'
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
+    smileTitle: {
+        padding: '10px',
+        color: 'gray'
     },
-    title: {
-        marginBottom: 16,
-        fontSize: 14,
+    button: {
+        margin: theme.spacing.unit,
+        float: 'right'
     },
-    pos: {
-        marginBottom: 12,
+    header: {
+        padding: '2px 16px'
     },
+    content: {
+        padding: '2px 16px'
+    },
+    questionsContainer: {
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    question: {
+        float: 'left'
+    },
+    questionStateActive: {
+        color: 'green',
+        float: 'right'
+    },
+    questionStateInActive: {
+        color: 'red',
+        float: 'right'
+    },
+    questionBox: {
+        padding: '20px 10px 20px 10px',
+        marginBottom: '20px'
+    }
 });
 
+const TabContainer = ({ children, dir }) => {
+    return (
+        <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+            {children}
+        </Typography>
+    );
+};
 
 class DashboardPage extends Component {
+
     state = {
-        value: 0
+        value: 0,
     };
     handleChange = (event, value) => {
         this.setState({ value });
@@ -75,130 +131,202 @@ class DashboardPage extends Component {
     handleChangeIndex = index => {
         this.setState({ value: index });
     };
+ 
+    renderQuestions = (classes) => {
+        return questionData.map((item, i) => {
+            return (
+                <div key={i}>
+                    <div className={classes.questionBox}>
+                        <Typography className={classes.question}>{item.question}</Typography>
+                        <Typography className={item.state == 'Active'? classes.questionStateActive: classes.questionStateInActive}>{item.state}</Typography>
+                    </div>
+                    <Divider />
+                </div>
+            );
+        });
+    }
+    
 
     render() {
-        const { classes } = this.props;
-        const bull = <span className={classes.bullet}>•</span>;
+        const { classes, theme } = this.props;
 
         return (
-            <div>
-                <Grid container>
-                    <ItemGrid xs={12} sm={6} md={3}>
-                        <StatsCard
-                            icon={ContentCopy}
-                            iconColor="orange"
-                            title="Used Space"
-                            description="49/50"
-                            small="GB"
-                            statIcon={Warning}
-                            statIconColor="danger"
-                            statLink={{ text: "Get More Space...", href: "#pablo" }}
-                        />
-                    </ItemGrid>
-                    <ItemGrid xs={12} sm={6} md={3}>
-                        <StatsCard
-                            icon={Store}
-                            iconColor="green"
-                            title="Revenue"
-                            description="$34,245"
-                            statIcon={DateRange}
-                            statText="Last 24 Hours"
-                        />
-                    </ItemGrid>
-                    <ItemGrid xs={12} sm={6} md={3}>
-                        <StatsCard
-                            icon={InfoOutline}
-                            iconColor="red"
-                            title="Fixed Issues"
-                            description="75"
-                            statIcon={LocalOffer}
-                            statText="Tracked from Github"
-                        />
-                    </ItemGrid>
-                    <ItemGrid xs={12} sm={6} md={3}>
-                        <StatsCard
-                            icon={Accessibility}
-                            iconColor="blue"
-                            title="Followers"
-                            description="+245"
-                            statIcon={Update}
-                            statText="Just Updated"
-                        />
-                    </ItemGrid>
-                </Grid>
+            <div className={classes.root}>
+                <AppBar position="static" color="default" className={classes.appBar}>
+                    <Tabs
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        fullWidth
+                    >
+                        <Tab label="OVERVIEW" />
+                        <Tab label="QUESTIONS" />
+                        <Tab label="DEVICES" />
+                        <Tab label="STATISTICS" />
+                    </Tabs>
+                </AppBar>
+                <SwipeableViews
+                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                    index={this.state.value}
+                    onChangeIndex={this.handleChangeIndex}
+                >
+                    <TabContainer dir={theme.direction}>
+                        <Grid container>
+                            <ItemGrid xs={8}>
+                                <BasicCard
+                                    headerColor="gray"
+                                    cardTitle="Responses"
+                                    content={
+                                        <Grid container>
+                                            <ItemGrid md={4}>
+                                                <Doughnut
+                                                    data={data}
+                                                    width={150}
+                                                    height={150}
+                                                    options={{
+                                                        showDatapoints: true,
+                                                        maintainAspectRatio: false,
+                                                        animation: {
+                                                            animateScale: true,
+                                                            animateRotate: true
+                                                        },
+                                                        plugins: {
+                                                            datalabels: {
+                                                                display: true,
+                                                                color: 'black',
+                                                                anchor: 'center', //end
+                                                                offset: 18,
+                                                                font: {
+                                                                    size: 11
+                                                                }
+                                                            }
+                                                        },
+                                                        legend: {
+                                                            position: 'left',
+                                                            maxHeight: 60,
+                                                            labels: {
+                                                                fontSize: 8,
+                                                                boxWidth: 10
+                                                            }
+                                                        }
+                                                    }}
+                                                />
+                                            </ItemGrid>
+                                            <ItemGrid md={8} >
+                                                <Typography className={classes.smileTitle}> How is the big burger ?</Typography>
+                                                <div className={classes.smileBlock}>
+                                                    <SmileBlock
+                                                        type="lol"
+                                                        // horizontal = {true}
+                                                        data={{
+                                                            percentage: '32%',
+                                                            count: 230
+                                                        }}
+                                                    />
+                                                    <SmileBlock
+                                                        type="smile"
+                                                        data={{
+                                                            percentage: '12%',
+                                                            count: 76
+                                                        }}
+                                                    />
+                                                    <SmileBlock
+                                                        type="love"
+                                                        data={{
+                                                            percentage: '45%',
+                                                            count: 110
+                                                        }}
+                                                    />
+                                                    <SmileBlock
+                                                        type="neutral"
+                                                        data={{
+                                                            percentage: '1%',
+                                                            count: 20
+                                                        }}
+                                                    />
+                                                    <SmileBlock
+                                                        type="angry"
+                                                        data={{
+                                                            percentage: '10%',
+                                                            count: 48
+                                                        }}
+                                                    />
+                                                </div>
 
-                <Grid container>
-                    <ItemGrid xs={12} sm={12} md={4}>
-                        <ChartCard
-                            chart={
-                                <ChartistGraph
-                                    className="ct-chart"
-                                    data={dailySalesChart.data}
-                                    type="Line"
-                                    options={dailySalesChart.options}
-                                    listener={dailySalesChart.animation}
+                                            </ItemGrid>
+                                        </Grid >
+                                    }
                                 />
+
+                            </ItemGrid>
+                            <ItemGrid xs={4}>
+                                <Grid>
+                                    <ItemGrid md={12}>
+                                        <BasicCard
+                                            headerColor="gray"
+                                            cardTitle="Key Facts"
+                                            content={
+                                                <div>
+                                                    {
+                                                        keyFacts.map((item, i) => (
+                                                            <ListItem key={`item${i + 1}`}>
+                                                                <ListItemText primary={item} />
+                                                            </ListItem>
+                                                        ))
+                                                    }
+                                                </div>
+                                            }
+                                        />
+                                    </ItemGrid>
+                                </Grid>
+                            </ItemGrid>
+                            <ItemGrid xs={8}>
+                                <Grid>
+                                    <ItemGrid md={12}>
+                                        <BasicCard
+                                            headerColor="gray"
+                                            cardTitle="Active Questions"
+                                            content={
+                                                <div>
+                                                    <FeedbackQuestionBlock />
+                                                    <Divider />
+                                                    <FeedbackQuestionBlock />
+                                                    <Divider />
+                                                    <FeedbackQuestionBlock />
+                                                </div>
+                                            }
+                                        />
+                                    </ItemGrid>
+                                </Grid>
+                            </ItemGrid>
+                        </Grid>
+                    </TabContainer>
+                    <TabContainer dir={theme.direction}>
+                        <BasicCard
+                            headerColor="gray"
+                            cardTitle="Questions"
+                            content={
+                                <div className={classes.questionsContainer}>
+                                    <header className={classes.header}>
+                                        <Button variant="raised" color="primary" className={classes.button}>
+                                            New Question
+                                         </Button>
+                                    </header>
+                                    <Divider />
+                                    <div className={classes.content}>
+                                        {this.renderQuestions(classes)}
+                                    </div>
+                                </div>
                             }
-                            chartColor="green"
-                            title="Daily Sales"
-                            text={
-                                <span>
-                                    <span className={this.props.classes.successText}>
-                                        <ArrowUpward className={this.props.classes.upArrowCardCategory}/>
-                                        {" "} 55%
-                                    </span>
-                                    {" "} increase in today sales.
-                            </span>
-                            }
-                            statIcon={AccessTime}
-                            statText="updated 4 minutes ago"
                         />
-                    </ItemGrid>
-                    <ItemGrid xs={12} sm={12} md={4}>
-                        <ChartCard
-                            chart={
-                                <ChartistGraph
-                                    className="ct-chart"
-                                    data={emailsSubscriptionChart.data}
-                                    type="Bar"
-                                    options={emailsSubscriptionChart.options}
-                                    responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                                    listener={emailsSubscriptionChart.animation}
-                                />
-                            }
-                            chartColor="orange"
-                            title="Email Subscriptions"
-                            text="Last Campaign Performance"
-                            statIcon={AccessTime}
-                            statText="campaign sent 2 days ago"
-                        />
-                    </ItemGrid>
-                    <ItemGrid xs={12} sm={12} md={4}>
-                        <ChartCard
-                            chart={
-                                <ChartistGraph
-                                    className="ct-chart"
-                                    data={completedTasksChart.data}
-                                    type="Line"
-                                    options={completedTasksChart.options}
-                                    listener={completedTasksChart.animation}
-                                />
-                            }
-                            chartColor="red"
-                            title="Completed Tasks"
-                            text="Last Campaign Performance"
-                            statIcon={AccessTime}
-                            statText="campaign sent 2 days ago"
-                        />
-                    </ItemGrid>
-                </Grid>
+                    </TabContainer>
+                    <TabContainer dir={theme.direction}>Item DEVICES</TabContainer>
+                    <TabContainer dir={theme.direction}>Item STATISTICS</TabContainer>
+                </SwipeableViews>
             </div>
         );
     }
 }
 
-DashboardPage.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(DashboardPage);
+export default withStyles(styles, { withTheme: true })(DashboardPage);

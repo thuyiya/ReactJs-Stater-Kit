@@ -1,9 +1,17 @@
-import StatsCard from './Cards/StatsCard';
 import ItemGrid from './Grid/ItemGrid';
-import ChartCard from './Cards/ChartCard';
+import BasicCard from './Cards/BasicCard';
+import Footer from './Footer';
+import Sidebar from './Sidebar';
+import Header from './Header';
+import SmileBlock from './SmileBlock';
+import FeedbackQuestionBlock from './FeedbackQuestionBlock';
 
 export {
-    StatsCard,
     ItemGrid,
-    ChartCard
+    BasicCard,
+    Footer,
+    Sidebar,
+    Header,
+    SmileBlock,
+    FeedbackQuestionBlock
 };

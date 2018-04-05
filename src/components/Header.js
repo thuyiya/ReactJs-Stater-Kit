@@ -11,6 +11,7 @@ import {
     IconButton,
     Typography,
     Badge,
+    Avatar,
     Menu,
     MenuItem
 } from "material-ui";
@@ -50,7 +51,7 @@ class Header extends Component {
             <AppBar
                 position="absolute"
                 className={classNames(classes.appBar, open && classes.appBarShift)}
-                color="default"
+                color="primary"
             >
                 <Toolbar disableGutters={!open}>
                     <IconButton
@@ -72,18 +73,14 @@ class Header extends Component {
 
                     {auth && (
                         <div>
-                            <IconButton className={classes.margin}>
-                                <Badge badgeContent={4} color="primary">
-                                    <MailIcon />
-                                </Badge>
-                            </IconButton>
                             <IconButton
                                 aria-owns={openmenu ? 'menu-appbar' : null}
                                 aria-haspopup="true"
                                 onClick={this.handleMenu}
+                                className={classes.avatarcontainer}
                                 color="inherit"
                             >
-                                <ExitToApp />
+                                <Avatar className={classes.avatar}>H</Avatar>
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
